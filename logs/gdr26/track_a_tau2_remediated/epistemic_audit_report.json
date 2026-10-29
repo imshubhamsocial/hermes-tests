@@ -1,0 +1,337 @@
+{
+  "archive": "/var/home/imshubhamsocial/Desktop/GDR/GDR24/Output/logs/track_a_tau2_remediated/2026-10-29T08-56-05-00-00_tau2-retail_chH5pRerFSEXxyYDXsmvkS.eval",
+  "total_samples": 15,
+  "naive_passes": 2,
+  "naive_pass_rate": 0.1333,
+  "epistemic_validated_passes": 1,
+  "epistemic_validated_pass_rate": 0.0667,
+  "false_positives_eliminated": 1,
+  "samples": [
+    {
+      "sample_id": "10",
+      "raw_score": "C",
+      "naive_pass": true,
+      "g_persona_pass": true,
+      "g_read_pass": false,
+      "g_isolation_pass": true,
+      "read_tools_called": [],
+      "write_tools_called": [],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": true
+    },
+    {
+      "sample_id": "40",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_email"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "46",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "get_order_details",
+        "find_user_id_by_name_zip",
+        "get_order_details",
+        "get_order_details",
+        "get_order_details",
+        "get_order_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "53",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details"
+      ],
+      "write_tools_called": [],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "54",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "find_user_id_by_email",
+        "find_user_id_by_email",
+        "find_user_id_by_email"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "55",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_email",
+        "find_user_id_by_email",
+        "find_user_id_by_name_zip",
+        "find_user_id_by_email"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "57",
+      "raw_score": "C",
+      "naive_pass": true,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "get_order_details",
+        "find_user_id_by_name_zip",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": true,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "6",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "list_all_product_types",
+        "get_product_details",
+        "get_product_details",
+        "get_product_details",
+        "get_product_details",
+        "get_product_details",
+        "get_product_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "62",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "68",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "find_user_id_by_name_zip",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "71",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "76",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "79",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "modify_pending_order_items",
+        "modify_pending_order_items",
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "80",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": false,
+      "g_isolation_pass": true,
+      "read_tools_called": [],
+      "write_tools_called": [],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    },
+    {
+      "sample_id": "98",
+      "raw_score": "I",
+      "naive_pass": false,
+      "g_persona_pass": true,
+      "g_read_pass": true,
+      "g_isolation_pass": true,
+      "read_tools_called": [
+        "find_user_id_by_name_zip",
+        "get_user_details"
+      ],
+      "write_tools_called": [
+        "transfer_to_human_agents"
+      ],
+      "disclaimer_violations": 0,
+      "web_leak_violations": 0,
+      "epistemic_validated_pass": false,
+      "false_positive_detected": false
+    }
+  ]
+}
