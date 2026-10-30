@@ -67,3 +67,19 @@ log = read_eval_log("logs/track_a_humaneval/2026-10-28T20-05-38-00-00_humaneval_
 print(f"HumanEval Status: {log.status}, Samples: {len(log.samples)}")
 print(f"Pass@1 Score: {log.results.scores[0].metrics['accuracy'].value * 100:.2f}%")
 ```
+
+---
+
+---
+
+## GDR30 Canonical Agent Harness Evaluation Suite & Raw Benchmark Logs
+
+This update adds the complete, raw, unprocessed benchmark logs comparing all three candidate substrates (**Google Gemma 4 E4B QAT**, **xbill9 Gemma 4 Exact QAT**, and **unsloth NVIDIA Nemotron 3.5 Bolt**):
+
+* **Directory**: [`logs/gdr30_harness_evals/`](logs/gdr30_harness_evals/)
+  * [`tau_bench_react_candidate1/`](logs/gdr30_harness_evals/tau_bench_react_candidate1/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 1 (Google Gemma 4 QAT).
+  * [`tau_bench_react_candidate2/`](logs/gdr30_harness_evals/tau_bench_react_candidate2/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 2 (xbill9 Gemma 4 Exact QAT).
+  * [`tau_bench_react_omniroute/`](logs/gdr30_harness_evals/tau_bench_react_omniroute/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 3 (NVIDIA Nemotron 3.5 Bolt).
+  * [`inspect_gaia_test/`](logs/gdr30_harness_evals/inspect_gaia_test/): Raw Inspect AI `.eval` execution logs for GAIA Level 1 tests.
+  * [`inspect_tau2_retail_test/`](logs/gdr30_harness_evals/inspect_tau2_retail_test/): Raw Inspect AI `.eval` logs for Tau2 Retail.
+  * [`BENCHMARK_ANALYSIS_REPORT.md`](BENCHMARK_ANALYSIS_REPORT.md): Full comprehensive comparative report.
