@@ -1,0 +1,14 @@
+{
+  "stage": 1,
+  "status": "COMPLETE",
+  "binding": "127.0.0.1:8080",
+  "protocol": {
+    "voidfall": ["input", "shoot", "snapshot", "splat"],
+    "contract": ["JOIN_ROOM", "WELCOME", "FIRE_SHOT", "STATE_SNAPSHOT"]
+  },
+  "endpoints": {
+    "static_client": "/client/",
+    "websocket": "ws://127.0.0.1:8080"
+  },
+  "notes": "Context files (CONTEXT.md, invariants.md, rules.md, references.md) were not found in the repository, proceeding based on task specification."
+}

@@ -1,85 +1,68 @@
-# hermes-tests: Raw Benchmark Logs & Forensic Trace Receipts
+# hermes-tests: Raw Benchmark Logs, Provenance Receipts & Gauntlets Matrix
 
-This repository contains the complete raw execution traces, Inspect AI (`.eval`) archives, and forensic audit reports evaluating **Hermes Agent OS** paired with **Gemma-4-E4B-it-qat-q4_0** under the **GDR24 / GDR25 Interpretable Context Methodology (ICM / MWP, arXiv:2603.16021)**.
+This repository contains the authoritative raw execution traces, Inspect AI (`.eval`) archives, forensic audit reports, and interactive benchmark suites evaluating **Hermes Agent OS** under the **Interpretable Context Methodology (ICM / MWP, arXiv:2603.16021)** across GDR24 through GDR34.
 
 ---
 
-## 1. Executive Benchmark Scorecard
+## 1. Executive Benchmark & Gauntlets Registry
 
-| Benchmark Track | Task Domain | Samples | Model / Substrate | Final Score | Key Architectural Finding |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Track B.3: AI2 ARC Challenge** | Scientific Reasoning MCQ | 50 | Hermes Agent OS (Port 8642) | **92.00% (46 / 50)** | High compressed textbook knowledge; excels at single-pass deduction. |
-| **Track A.3: BFCL** | Function Calling & AST Parsing | 100 | Port 8138 (Direct Llama-Server) | **51.00% (51 / 100)** | **64.0%** on single/multiple tool calls; **38.0%** on concurrent parallel calls. |
-| **Track A.4: HumanEval** | Python Code Synthesis | 164 | Port 8138 (Local Sandbox) | **42.07% (69 / 164)** | Strong CS algorithm knowledge; 61% of failures are variable renames fixable by linters. |
-| **Track A.1: Tau-bench Retail** | Multi-Turn Customer Support | 15 | Port 1934 (FastMCP Bridge) | **0.00% (0 / 15 validated)** | Multi-turn state-recovery failure when DB returns error; transfers to human agent. |
-| **3-Gate Epistemic Audit** | Telemetry Validation | 15 | `verify_epistemic_eval_audit.py` | **1 False Positive Stripped** | Successfully eliminated Sample 12 false pass awarded by naive Inspect AI grader. |
-| **Track A.2: Tau-bench Airline** | Flight Booking Dialogue | 15 | Port 1934 (FastMCP Bridge) | **Skipped** | Bypassed per established 4B multi-turn conversational limits. |
-| **Track B.1: GAIA Level 1** | Multimodal Assistant Tasks | 20 | Hermes Agent OS (Port 8642) | **Gated Repo Gate** | Requires Hugging Face gated repo license agreement. |
+| Benchmark / Gauntlet | Domain & Target | Stages / Artifacts | Status & Provenance |
+| :--- | :--- | :--- | :--- |
+| **Gauntlet A: Voxel FPS Multiplayer** | Three.js WebGL Voxel Engine + WebSocket Multiplayer | `benchmarks/gauntlet_a_voxel_fps/` | 3-Stage ICM Pipeline, Stage 1/2 receipts, client & server contracts |
+| **Gauntlet B: Splatbox Autonomous Browser Gaming** | Live Chrome CDP Port 9222 on `https://splatbox.alexdiaz.fyi/` | `benchmarks/gauntlet_b_splatbox/` | Full autonomous Python controller (`splatbox_agent.py`), live PNG captures, OpenCV target detection traces |
+| **Gauntlet C: Dual-FBO Aquarium Simulation** | Three.js WebGL GPGPU Heightfield Water Physics | `benchmarks/gauntlet_c_aquarium/` | Full ICM stage contracts, shader specs, and verification harnesses |
+| **Gauntlet D: `leanrea` Reverse Engineering** | POSIX Reverse Engineering Benchmark | `benchmarks/leanrea_eval/` | Zero-MCP reverse engineering benchmark suite |
+| **Gauntlet E: `ffmpeg-skill` Video Synthesis** | 42 Deterministic FFmpeg Video Primitives | `benchmarks/ffmpeg_skill_eval/` | Audio/video manipulation contract verification |
+| **Gauntlet F: `diagram-design` Visualizer** | Clean HTML+SVG Editorial Graphics (Zero Mermaid Slop) | `benchmarks/diagram_design_eval/` | Procedural vector diagram compiler benchmark |
+| **Gauntlet G: `markitdown` Ingestion** | Multi-Format Document Ingestion & Markdown Conversion | `benchmarks/markitdown_eval/` | PDF, Office, audio transcription parsing testbed |
+| **AI2 ARC Challenge** | Scientific Reasoning MCQ (50 samples) | `logs/gdr30_harness_evals/baseline_arc/` | **92.00% (46 / 50)** |
+| **BFCL Function Calling** | Single & Parallel Tool Invocation (100 samples) | `logs/2026-10-29T19-34-35-00-00_bfcl_U8GbDDnBKWpxQHH9nPnjpa.eval` | **51.00% (51 / 100)** |
+| **HumanEval** | Python Code Synthesis (164 samples) | `logs/gdr26/track_a_humaneval/` | **42.07% (69 / 164)** |
+| **TAU-2 Retail** | Multi-Turn Customer Support Dialogue | `logs/2026-10-26T20-11-48-00-00_tau2-retail_9Eo5qBTpZZmK3vpqnNMATi.eval` | Multi-turn dialog traces and epistemic audits |
+| **GAIA Level 1/2** | General AI Assistant Benchmark | `logs/gaia_custom_tui/` | Custom TUI session transcripts and task manifests |
 
 ---
 
 ## 2. Hardware & Substrate Invariants
 
-- **Host Hardware**: NVIDIA GeForce RTX 3050 Laptop GPU (6,144 MiB VRAM), 6-core host CPU.
-- **VRAM Ceiling Invariant**: Peak consumption was strictly maintained at **5,271 MiB**, honoring the mandatory `query_live_nvml_vram() <= 5400.0 MiB` rule.
-- **Model Checkpoint**: `google/gemma-4-E4B-it-qat-q4_0-gguf` (Quantized to Q4_0, ~2.2 GB weight footprint).
-- **Speculative Draft Engine**: `mtp-gemma-4-E4B-it-Q4_0.gguf` running via `llama-server.bin` with `draft-mtp,ngram-map-k` achieving 75-97 tokens/sec.
+- **Host Hardware**: NVIDIA GeForce RTX 3050 Laptop GPU (6,144 MiB physical VRAM), 6-core host CPU, Fedora Kinoite 44.
+- **VRAM Ceiling Invariant**: Peak consumption maintained strictly $\le 5,800.0$ MiB (GDR32-34 certified at 4,311 MiB).
 - **Active Substrate Daemons**:
-  - Port 8138: llama-server inference daemon
-  - Port 8642: Hermes Agent OS Gateway (`sk-hermes-local-prod-12345678`)
-  - Port 1933: OpenViking Hierarchical Memory Server
-  - Port 20128: OmniRoute Gateway
-  - Port 1934: FastMCP Ephemeral Dynamic Tool Bridge
+  - Port 8138: `hermes-llama-server.service` (Local LLM Inference)
+  - Port 1933: `hermes-openviking.service` (Hierarchical Memory, `endpoint: http://127.0.0.1:1933`)
+  - Port 8642: `hermes gateway run` (Gateway & Agent Router)
+  - Port 9222: `chrome-dev-cdp.service` (Chrome DevTools Protocol Bridge)
 
 ---
 
-## 3. Repository Structure
+## 3. Repository Directory Structure
 
 ```
 ├── README.md
-├── remediated_gauntlet.log                  # Full stdout/stderr execution log across all stages
-├── GDR24_Production_Remediation_Blueprint.md # Engineering architecture & remediation blueprint
-└── logs/
-    ├── track_b_arc_remediated/              # Sealed AI2 ARC Challenge eval log (92.00%)
-    ├── track_a_bfcl/                        # Sealed Berkeley Function Calling Leaderboard eval log (51.00%)
-    ├── track_a_humaneval/                   # Sealed OpenAI HumanEval eval log (42.07%)
-    └── track_a_tau2_remediated/             # Sealed Tau-bench Retail eval log & epistemic audit report
-        └── epistemic_audit_report.json      # 3-Gate Epistemic Policy Audit eliminating false positives
+├── BENCHMARK_ANALYSIS_REPORT.md             # Comprehensive cross-benchmark evaluation analysis
+├── remediated_gauntlet.log                  # Historical execution log
+├── benchmarks/                              # All living gauntlets and interactive testbeds
+│   ├── gauntlet_a_voxel_fps/               # Gauntlet A: 3-Stage Three.js Voxel FPS
+│   ├── gauntlet_b_splatbox/                # Gauntlet B: Live CDP Splatbox autonomous browser game
+│   │   ├── output/
+│   │   │   ├── splatbox_agent.py           # Autonomous CDP controller
+│   │   │   ├── live_game_screen.png        # Menu screenshot
+│   │   │   ├── live_game_playing.png       # Live 3D gameplay capture
+│   │   │   ├── after_cdp_click.png         # Native CDP click trace
+│   │   │   ├── target_detected.png         # OpenCV target detection overlay
+│   │   │   └── target_crop.png             # Target crop candidate
+│   │   ├── contract.sh                     # Deterministic verification contract
+│   │   └── PROMPT_REMEDIATION.txt          # Active prompt specification
+│   ├── gauntlet_c_aquarium/                # Gauntlet C: Dual-FBO wave simulation
+│   ├── leanrea_eval/                       # Gauntlet D: Reverse engineering
+│   ├── ffmpeg_skill_eval/                  # Gauntlet E: Video editing
+│   ├── diagram_design_eval/                # Gauntlet F: Diagram design
+│   ├── markitdown_eval/                    # Gauntlet G: Document ingestion
+│   ├── gaia/                               # GAIA evaluation harness
+│   └── tau_bench/                          # Tau-bench evaluation harness
+└── logs/                                   # Raw Inspect AI evaluation archives (.eval)
+    ├── gaia_custom_tui/                    # GAIA interactive transcripts
+    ├── inspect_gaia_test/                  # GAIA test outputs
+    ├── inspect_tau2_retail_test/           # Tau-bench test outputs
+    └── *.eval                              # Sealed evaluation archives
 ```
-
----
-
-## 4. How to Inspect & Validate Logs
-
-Inspect AI eval logs use Zstandard-compressed zip format. To explore them:
-
-### Using Inspect AI Interactive Web UI:
-```bash
-inspect view --log-dir logs/
-```
-
-### Using Python:
-```python
-from inspect_ai.log import read_eval_log
-
-# Load HumanEval results:
-log = read_eval_log("logs/track_a_humaneval/2026-10-28T20-05-38-00-00_humaneval_BWbaJyu5AeXBY7qQXS53kz.eval")
-print(f"HumanEval Status: {log.status}, Samples: {len(log.samples)}")
-print(f"Pass@1 Score: {log.results.scores[0].metrics['accuracy'].value * 100:.2f}%")
-```
-
----
-
----
-
-## GDR30 Canonical Agent Harness Evaluation Suite & Raw Benchmark Logs
-
-This update adds the complete, raw, unprocessed benchmark logs comparing all three candidate substrates (**Google Gemma 4 E4B QAT**, **xbill9 Gemma 4 Exact QAT**, and **unsloth NVIDIA Nemotron 3.5 Bolt**):
-
-* **Directory**: [`logs/gdr30_harness_evals/`](logs/gdr30_harness_evals/)
-  * [`tau_bench_react_candidate1/`](logs/gdr30_harness_evals/tau_bench_react_candidate1/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 1 (Google Gemma 4 QAT).
-  * [`tau_bench_react_candidate2/`](logs/gdr30_harness_evals/tau_bench_react_candidate2/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 2 (xbill9 Gemma 4 Exact QAT).
-  * [`tau_bench_react_omniroute/`](logs/gdr30_harness_evals/tau_bench_react_omniroute/): Raw multi-turn customer dialogues and trajectory JSONs for Candidate 3 (NVIDIA Nemotron 3.5 Bolt).
-  * [`inspect_gaia_test/`](logs/gdr30_harness_evals/inspect_gaia_test/): Raw Inspect AI `.eval` execution logs for GAIA Level 1 tests.
-  * [`inspect_tau2_retail_test/`](logs/gdr30_harness_evals/inspect_tau2_retail_test/): Raw Inspect AI `.eval` logs for Tau2 Retail.
-  * [`BENCHMARK_ANALYSIS_REPORT.md`](BENCHMARK_ANALYSIS_REPORT.md): Full comprehensive comparative report.

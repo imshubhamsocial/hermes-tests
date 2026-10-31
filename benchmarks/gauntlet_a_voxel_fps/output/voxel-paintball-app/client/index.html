@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voxel Paintball Frontier</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="overlay">Click to Play</div>
+    <div id="crosshair"></div>
+    <div id="score">Score: 0</div>
+    <div id="ammo">Ammo: 30</div>
+    <div id="fps-counter">FPS: 0</div>
+    <div id="weapon-hotbar">
+        <div class="slot" data-weapon="1">1</div>
+        <div class="slot" data-weapon="2">2</div>
+        <div class="slot" data-weapon="3">3</div>
+        <div class="slot" data-weapon="4">4</div>
+        <div class="slot" data-weapon="5">5</div>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <script type="module" src="js/net/socket_sync.js"></script>
+    <script type="module" src="js/engine/voxel_world.js"></script>
+    <script type="module" src="js/engine/camera_fps.js"></script>
+    <script type="module" src="js/engine/paintball.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
